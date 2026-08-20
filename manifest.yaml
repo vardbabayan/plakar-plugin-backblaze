@@ -1,0 +1,16 @@
+name: backblaze
+display_name: Backblaze B2
+description: Plakar plugin for integration with Backblaze B2
+homepage: https://github.com/vardbabayan/plakar-plugin-backblaze
+license: MIT
+tags: [backup, storage]
+api_version: v1.1.0
+connectors:
+- type: storage
+  executable: b2Storage
+  homepage: https://github.com/vardbabayan/plakar-plugin-backblaze
+  license: MIT
+  protocols: [b2]
+  validator: ./storage/schema.json
+  class: object-storage
+  subclass: s3

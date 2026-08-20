@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plakar Backblaze B2 Storage Connector Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "location",
+    "access_key",
+    "secret_access_key"
+  ],
+  "properties": {
+    "location": {
+      "type": "string",
+      "minLength": 1,
+      "description": "B2 location URI: b2://<endpoint>/<bucket>/<optional-prefix>",
+      "pattern": "^b2://[^/]+/[^/]+(/.*)?$"
+    },
+    "access_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Backblaze application key ID (the 'keyID' column in the B2 console)"
+    },
+    "secret_access_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Backblaze application key (the 'applicationKey' shown once at creation)"
+    },
+    "region": {
+      "type": "string",
+      "description": "B2 region, e.g. us-west-004. Derived from the endpoint host when omitted."
+    },
+    "endpoint": {
+      "type": "string",
+      "default": "",
+      "description": "B2 S3 endpoint host, e.g. s3.us-west-004.backblazeb2.com"
+    },
+    "root": {
+      "type": "string",
+      "default": "/",
+      "pattern": "^/",
+      "description": "bucket path prefix to use"
+    },
+    "use_tls": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable TLS when talking to the B2 endpoint"
+    },
+    "tls_insecure_no_verify": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable TLS certificate verification (dangerous; use only for testing)"
+    },
+    "use_path_style": {
+      "type": "boolean",
+      "default": false,
+      "description": "Address the bucket as a path element rather than a virtual host"
+    }
+  }
+}
